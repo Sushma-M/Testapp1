@@ -23,6 +23,20 @@ Application.$controller("MainPageController", ["$scope", function ($scope) {
 
 }]);
 
+
+Application.$controller("UserGrid1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("UserLiveform1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
 </script>
 <script id="Main.variables.json">
 var _MainPage_Variables_ ={}
@@ -38,7 +52,45 @@ var _MainPage_Variables_ ={}
                 <wm-tabpane name="tabpane1">
                     <wm-tabheader name="tabheader1"></wm-tabheader>
                     <wm-tabcontent name="tabcontent1">
-                        <wm-list name="list1"></wm-list>
+                        <wm-livegrid service="hrdb@User" name="UserLivegrid1">
+                            <wm-grid dataset="bind:Variables.HrdbUserData.dataSet" name="UserGrid1" deleterow="true" updaterow="true" insertrow="true" gridfirstrowselect="true" readonlygrid="false">
+                                <wm-grid-column binding="userid" caption="Userid" type="integer" primary-key="true" generator="identity" readonly="true" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                <wm-grid-column binding="username" caption="Username" type="string" readonly="false" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                <wm-grid-column binding="password" caption="Password" type="string" readonly="false" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                <wm-grid-column binding="role" caption="Role" type="string" readonly="false" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                <wm-grid-column binding="tenantid" caption="Tenantid" type="integer" readonly="false" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                <wm-grid-action key="addNewRow" label="New" value="new" icon="new" show="true" class="btn-primary" action="addNewRow()"></wm-grid-action>
+                            </wm-grid>
+                            <wm-liveform formtype="inline" dataset="bind:Variables.HrdbUserData.dataSet" name="UserLiveform1" novalidate="false" title="Details">
+                                <wm-layoutgrid name="layoutgrid1">
+                                    <wm-gridrow name="gridrow1">
+                                        <wm-gridcolumn show="hide" name="gridcolumn1" columnwidth="12">
+                                            <wm-form-field display-name="Userid" show="false" primary-key="true" generator="identity" key="userid" type="integer" is-related="false" readonly="true" required="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn show="show" name="gridcolumn2" columnwidth="12">
+                                            <wm-form-field display-name="Username" show="true" primary-key="false" generator="null" key="username" type="string" maxvalue="20" is-related="false" readonly="false" required="false"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow2">
+                                        <wm-gridcolumn show="show" name="gridcolumn3" columnwidth="12">
+                                            <wm-form-field display-name="Password" show="true" primary-key="false" generator="null" key="password" type="string" maxvalue="20" is-related="false" readonly="false" required="false"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow3">
+                                        <wm-gridcolumn show="show" name="gridcolumn4" columnwidth="12">
+                                            <wm-form-field display-name="Role" show="true" primary-key="false" generator="null" key="role" type="string" maxvalue="20" is-related="false" readonly="false" required="false"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow4">
+                                        <wm-gridcolumn show="show" name="gridcolumn5" columnwidth="12">
+                                            <wm-form-field display-name="Tenantid" show="true" primary-key="false" generator="null" key="tenantid" type="integer" is-related="false" readonly="false" required="false"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                                <wm-form-action key="cancel" class="form-cancel btn-secondary" iconclass="glyphicon glyphicon-remove-circle" action="cancel()" display-name="Cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                                <wm-form-action key="save" class="form-save btn-success" iconclass="glyphicon glyphicon-save" display-name="Save" show="true" type="Submit" update-mode="true"></wm-form-action>
+                            </wm-liveform>
+                        </wm-livegrid>
                     </wm-tabcontent>
                 </wm-tabpane>
                 <wm-tabpane name="tabpane2">
@@ -87,5 +139,4 @@ var _MainPage_Variables_ ={}
     </wm-content>
     <wm-footer name="footer1" content="footer"></wm-footer>
 </wm-page>
-
 </script>

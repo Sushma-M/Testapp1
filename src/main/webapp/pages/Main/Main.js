@@ -18,3 +18,18 @@ Application.$controller("MainPageController", ["$scope", function ($scope) {
     };
 
 }]);
+
+
+Application.$controller("UserGrid1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("UserLiveform1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);

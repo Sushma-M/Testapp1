@@ -1054,7 +1054,7 @@
 		"maxResults": 20,
 		"designMaxResults": 10,
 		"operation": "read",
-		"startUpdate": false,
+		"startUpdate": true,
 		"autoUpdate": true,
 		"inFlightBehavior": "executeLast",
 		"transformationRequired": false,
@@ -1147,7 +1147,8 @@
 			"entityName": "User",
 			"fullyQualifiedName": "com.hrdb.User",
 			"tableType": "TABLE"
-		}
+		},
+		"bindCount": 2
 	},
 	"HrdbVacationData": {
 		"type": "Vacation",
